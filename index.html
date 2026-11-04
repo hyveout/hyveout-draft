@@ -312,12 +312,19 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 /* ================= phones ================= */
 @media (max-width: 720px) {
   :root { --m-orb-hub: clamp(96px, 26vw, 132px); }
-  body[data-screen="hub"] .emblem-wrap { width: var(--m-orb-hub) !important; top: 46% !important; }
+  body[data-screen="hub"] .emblem-wrap { width: var(--m-orb-hub) !important; top: 50% !important; }
   body[data-screen="section"] .emblem-wrap { width: 72px !important; left: 50% !important; top: 7.5vh !important; }
   .hub-center { width: var(--m-orb-hub); top: 46%; align-items: flex-start; }
   .hub-center .view-latest { transform: translateY(-135%); font-size: 7px; padding: 8px 10px; }
   .sat-lines line { stroke-width: 2; stroke-dasharray: 3 5; }
-  .sat .orbit { width: 66px; box-shadow: inset 0 0 0 3px #fff, 4px 5px 0 #000; }
+  .sat .orbit { width: 66px; box-shadow: inset 0 0 0 3px #fff, 2px 3px 0 rgba(0,0,0,.55); }
+  .sat:hover .orbit, body[data-input="keys"] .sat.focus .orbit { box-shadow: inset 0 0 0 3px #fff, 2px 3px 0 rgba(0,0,0,.55), 0 0 18px var(--accent); }
+  .sat .icon { filter: drop-shadow(2px 2px 0 rgba(0,0,0,.25)); }
+  .sat .h3 { display: none; }
+  .face { filter: drop-shadow(3px 4px 0 rgba(0,0,0,.7)) drop-shadow(0 14px 18px rgba(20,60,150,.25)); }
+  .panel { box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 6px var(--accent), 5px 6px 0 #000, 0 20px 40px rgba(11,20,48,.14); }
+  .row, .card, .btn, .arrow-btn, .chip { box-shadow: 2px 2px 0 rgba(0,0,0,.6); }
+  .viewer { box-shadow: 3px 3px 0 var(--accent); }
   .sat .label { font-size: 9px; letter-spacing: 0; }
   .sat { gap: 14px; }
   .ring.r3 { display: none; }
@@ -659,7 +666,7 @@ const ROUTES = {
       const layout = () => {
         const W = innerWidth, H = innerHeight, m = Math.min(W, H);
         const phone = W <= 720;
-        const cx = W / 2, cy = phone ? H * .46 : H / 2;
+        const cx = W / 2, cy = phone ? H * .5 : H / 2;
         const orbR = (phone ? Math.min(132, Math.max(96, W * .26)) : Math.min(360, Math.max(180, m * .34))) / 2;
         svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
         nodes.forEach(({ s, a, line, dot, under }, i) => {
@@ -668,7 +675,7 @@ const ROUTES = {
             // same ring on phones, just tighter: sides level with the emblem, two above, two below
             const PA = { about: 118, contact: 62, mind: 180, shop: 0, media: 242, games: 298 }[s.k];
             const side = PA === 180 || PA === 0;
-            const D = side ? Math.min(W * .36, 150) : Math.min(H * .19, 165);
+            const D = side ? Math.min(W * .32, 140) : Math.min(H * .19, 165);
             const rad = PA * Math.PI / 180;
             x = cx + Math.cos(rad) * D; y = cy - Math.sin(rad) * D;
           } else {
