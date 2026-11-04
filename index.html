@@ -224,7 +224,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 .panel.tall { max-height: 72vh; }
 .panel.menu { max-height: 56vh; }
 .panel.menu .row { padding: 22px 22px; }
-.panel.menu .row.sep { padding: 14px 4px 4px; font-size: clamp(9px,1vw,13px); } .panel.menu .row .t { font-size: clamp(13px,1.6vw,22px); } .panel.menu .row .m { font-size: .6em; } .panel.menu .rows { gap: 16px; }
+.panel.menu .row.sep { padding: 14px 4px 4px; font-size: clamp(9px,1vw,13px); } .panel.menu .row .t { font-size: clamp(13px,1.6vw,22px); } .panel.menu .row .m { font-size: max(9px, .55em); } .panel.menu .rows { gap: 16px; }
 .panel.wide { width: min(92vw, 1100px); max-height: 72vh; }
 .contact-only { display: flex; justify-content: center; padding: 34px 0; } .contact-only .btn { font-size: clamp(11px,1.5vw,20px); padding: 16px 22px; }
 .stage { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 6px 0 18px; }
@@ -235,7 +235,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 .panel.wide .cards { gap: 22px; }
 .panel.wide .card { padding: 10px 10px 14px; }
 .panel.wide .card .t { font-size: clamp(12px,1.6vw,22px); text-align: center; margin-top: 14px; line-height: 1.3; }
-.panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 18px 22px 12px; border-bottom: 3px solid #000; background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--accent) 10%, #fff)); }
+.panel-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 18px 22px 12px; border-bottom: 3px solid #000; background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--accent) 10%, #fff)); }
 .panel-title { font-size: clamp(12px,1.6vw,20px); letter-spacing: 0; color: var(--accent); text-shadow: 1px 1px 0 rgba(0,0,0,.3); }
 .panel-count { font-size: clamp(7px,.8vw,10px); color: rgba(11,20,48,.55); letter-spacing: 0; white-space: nowrap; }
 .panel-body { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 14px 18px 18px; position: relative; }
@@ -252,13 +252,16 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 .row { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border: 2px solid #000; background: color-mix(in srgb, var(--accent) 16%, #fff); box-shadow: 3px 3px 0 #000; font-size: clamp(8px,1vw,12px); cursor: pointer; transition: background .12s, transform .12s; }
 .row:hover, body[data-input="keys"] .row.focus { background: var(--accent); color: #fff; transform: translate(4px, -2px); box-shadow: 5px 6px 0 #000; }
 .row .n { opacity: .5; font-size: .8em; min-width: 2.4em; }
-.row .t { flex: 1; overflow-wrap: anywhere; line-height: 1.5; font-size: clamp(10px,1.1vw,15px); }
-.row .m { font-size: .72em; opacity: .7; white-space: nowrap; }
+.row .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.row .t { overflow-wrap: anywhere; line-height: 1.5; font-size: clamp(10px,1.1vw,15px); }
+.row .th-spacer { width: 64px; flex-shrink: 0; } .row .th-spacer.sq { width: 40px; }
+.row { justify-content: center; }
+.row .m { font-size: .72em; opacity: .7; }
 .row .th { width: 64px; aspect-ratio: 16/9; object-fit: cover; background: #000; border: 2px solid #000; box-shadow: 2px 2px 0 #000; flex-shrink: 0; image-rendering: auto; }
 .row .th.sq { aspect-ratio: 1; width: 40px; object-fit: contain; background: #fff; }
 .row.disabled { opacity: .4; cursor: default; }
 .row.disabled:hover { background: color-mix(in srgb, var(--accent) 7%, #fff); color: var(--ink); transform: none; box-shadow: 3px 3px 0 #000; text-shadow: none; }
-.row.sep { background: none; cursor: default; padding: 10px 4px 2px; font-size: clamp(7px,.8vw,9px); letter-spacing: 0; color: var(--accent); border: none; border-bottom: 2px dashed #000; box-shadow: none; }
+.row.sep { justify-content: center; text-align: center; background: none; cursor: default; padding: 10px 4px 2px; font-size: clamp(7px,.8vw,9px); letter-spacing: 0; color: var(--accent); border: none; border-bottom: 2px dashed #000; box-shadow: none; }
 .row.sep:hover { background: none; transform: none; color: var(--accent); box-shadow: none; }
 .row .ext { font-size: .7em; opacity: .6; }
 
@@ -279,7 +282,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 .cd-featured .viewer { max-width: 420px; margin: 0 auto; }
 .cd-featured .viewer-meta { text-align: center; }
 /* text screens */
-.prose { font-size: clamp(9px,1.1vw,13px); line-height: 1.5; }
+.prose { text-align: center; font-size: clamp(9px,1.1vw,13px); line-height: 1.5; }
 .prose h3 { font-size: clamp(11px,1.4vw,18px); margin: 0 0 14px; color: var(--accent); }
 .prose p { margin: 0 0 14px; }
 .big { font-size: clamp(12px,1.8vw,22px); line-height: 1.45; }
@@ -311,7 +314,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 
 /* ================= phones ================= */
 @media (max-width: 720px) {
-  :root { --m-orb-hub: clamp(96px, 26vw, 132px); }
+  :root { --m-orb-hub: clamp(110px, 30vw, 150px); }
   body[data-screen="hub"] .emblem-wrap { width: var(--m-orb-hub) !important; top: 50% !important; }
   body[data-screen="section"] .emblem-wrap { width: 72px !important; left: 50% !important; top: 7.5vh !important; }
   .hub-center { width: var(--m-orb-hub); top: 46%; align-items: flex-start; }
@@ -333,7 +336,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
   .cards { grid-template-columns: 1fr; }
   .crumbs { top: calc(7.5vh + 46px); }
   .panel-head { padding: 12px 12px 8px; } .panel-body { padding: 10px; }
-  .row { gap: 8px; padding: 8px 8px; font-size: 7px; } .row .th { width: 48px; } .row .m { display: none; }
+  .row { gap: 8px; padding: 8px 8px; font-size: 7px; } .row .th, .row .th-spacer { width: 48px; } .row .th-spacer.sq, .row .th.sq { width: 32px; } .row .m { font-size: .8em; }
   .cards, .panel.wide .cards { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .panel.wide .card .t { font-size: 13px; margin-top: 10px; }
   .prompts { padding: 0 12px; font-size: 6px; bottom: 10px; } .key { width: 20px; height: 20px; font-size: 7px; }
@@ -551,10 +554,8 @@ function rowsList(body, items, onPick, { numbered = true } = {}) {
     if (!it.disabled) li.dataset.focus = '1';
     let html = '';
     if (it.thumb) html += `<img class="th${it.square ? ' sq' : ''}" src="${it.thumb}" alt="" loading="lazy">`;
-    if (numbered) html += `<span class="n">${String(i + 1).padStart(2, '0')}</span>`;
-    html += `<span class="t">${esc(it.title)}</span>`;
-    if (it.meta) html += `<span class="m">${esc(it.meta)}</span>`;
-    if (it.ext) html += `<span class="ext">↗</span>`;
+    html += `<span class="txt"><span class="t">${esc(it.title)}</span>${it.meta ? `<span class="m">${esc(it.meta)}</span>` : ''}</span>`;
+    if (it.thumb) html += `<span class="th-spacer${it.square ? ' sq' : ''}"></span>`;
     li.innerHTML = html;
     if (!it.disabled) li.addEventListener('click', () => onPick(it, i));
     ul.appendChild(li);
@@ -667,7 +668,7 @@ const ROUTES = {
         const W = innerWidth, H = innerHeight, m = Math.min(W, H);
         const phone = W <= 720;
         const cx = W / 2, cy = phone ? H * .5 : H / 2;
-        const orbR = (phone ? Math.min(132, Math.max(96, W * .26)) : Math.min(360, Math.max(180, m * .34))) / 2;
+        const orbR = (phone ? Math.min(150, Math.max(110, W * .30)) : Math.min(360, Math.max(180, m * .34))) / 2;
         svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
         nodes.forEach(({ s, a, line, dot, under }, i) => {
           let x, y;
@@ -675,7 +676,7 @@ const ROUTES = {
             // same ring on phones, just tighter: sides level with the emblem, two above, two below
             const PA = { about: 118, contact: 62, mind: 180, shop: 0, media: 242, games: 298 }[s.k];
             const side = PA === 180 || PA === 0;
-            const D = side ? Math.min(W * .32, 140) : Math.min(H * .19, 165);
+            const D = side ? Math.min(W * .345, 150) : Math.min(H * .215, 185);
             const rad = PA * Math.PI / 180;
             x = cx + Math.cos(rad) * D; y = cy - Math.sin(rad) * D;
           } else {
@@ -774,7 +775,7 @@ const ROUTES = {
         const grid = el('div', 'cards');
         D.games.forEach(g => {
           const a = el('a', 'card'); a.href = g.url; a.target = '_blank'; a.rel = 'noopener'; a.dataset.focus = '1';
-          a.innerHTML = `<video src="${src('clip:' + g.clip)}" poster="${src('gclip:' + g.clip)}" autoplay loop muted playsinline></video><div class="t">${esc(g.title)} ↗</div>`;
+          a.innerHTML = `<video src="${src('clip:' + g.clip)}" poster="${src('gclip:' + g.clip)}" autoplay loop muted playsinline></video><div class="t">${esc(g.title)}</div>`;
           grid.appendChild(a);
         });
         body.appendChild(grid);
