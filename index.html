@@ -187,11 +187,11 @@ body:not([data-screen="hub"]) .emblem-shadow { display: none; }
 .sat .orbit { position: relative; }
 .sat { overflow: visible; }
 .sat .orbit { isolation: isolate; }
-.sat .halo { position: absolute; left: 50%; top: 50%; translate: -50% -50%; border-radius: 50%; pointer-events: none; z-index: -1; box-sizing: border-box; }
-.sat .h1 { width: 126%; height: 126%; border: 2px dashed color-mix(in srgb, var(--accent) 70%, #000); opacity: .7; animation: halo-spin 14s linear infinite; }
-.sat .h2 { width: 150%; height: 150%; border: 1.5px solid color-mix(in srgb, var(--accent) 60%, #000); opacity: .5; border-left-color: transparent; border-right-color: transparent; animation: halo-spin 9s linear infinite reverse; }
-.sat .h3 { width: 174%; height: 174%; border: 3px dotted color-mix(in srgb, var(--accent) 60%, #000); opacity: .35; animation: halo-spin 22s linear infinite; }
-@keyframes halo-spin { to { rotate: 360deg; } }body[data-input="keys"] .sat.focus .halo { opacity: .9; animation-duration: 2.5s; } @media (hover: hover) { .sat:hover .halo { opacity: .9; animation-duration: 2.5s; } } @media (hover: none) { .sat:active .halo { opacity: .9; animation-duration: 2.5s; } }
+.sat .halo { position: absolute; border-radius: 50%; pointer-events: none; z-index: -1; box-sizing: border-box; transform-origin: 50% 50%; justify-self: stretch; align-self: stretch; }
+.sat .h1 { inset: -13%; border: 2px dashed color-mix(in srgb, var(--accent) 70%, #000); opacity: .7; animation: halo-spin 14s linear infinite; }
+.sat .h2 { inset: -25%; border: 1.5px solid color-mix(in srgb, var(--accent) 60%, #000); opacity: .5; border-left-color: transparent; border-right-color: transparent; animation: halo-spin 9s linear infinite reverse; }
+.sat .h3 { inset: -37%; border: 3px dotted color-mix(in srgb, var(--accent) 60%, #000); opacity: .35; animation: halo-spin 22s linear infinite; }
+@keyframes halo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }body[data-input="keys"] .sat.focus .halo { opacity: .9; animation-duration: 2.5s; } @media (hover: hover) { .sat:hover .halo { opacity: .9; animation-duration: 2.5s; } } @media (hover: none) { .sat:active .halo { opacity: .9; animation-duration: 2.5s; } }
 .sat .icon { width: 66%; aspect-ratio: 1; image-rendering: pixelated; filter: drop-shadow(3px 4px 0 rgba(0,0,0,.35)); transition: transform .25s cubic-bezier(.2,.9,.3,1.3); }
 .sat .label { position: relative; z-index: 2; font-size: clamp(11px, 1.35vw, 17px); letter-spacing: 0; color: var(--accent); white-space: nowrap; text-align: center; text-shadow: 1px 1px 0 rgba(0,0,0,.35); }body[data-input="keys"] .sat.focus { transform: translate(-50%, -50%) scale(1.06); } @media (hover: hover) { .sat:hover { transform: translate(-50%, -50%) scale(1.06); } } @media (hover: none) { .sat:active { transform: translate(-50%, -50%) scale(1.06); } }body[data-input="keys"] .sat.focus .orbit { background: #fff; box-shadow: inset 0 0 0 3px #fff, 5px 6px 0 #000, 0 0 30px var(--accent); } @media (hover: hover) { .sat:hover .orbit { background: #fff; box-shadow: inset 0 0 0 3px #fff, 5px 6px 0 #000, 0 0 30px var(--accent); } } @media (hover: none) { .sat:active .orbit { background: #fff; box-shadow: inset 0 0 0 3px #fff, 5px 6px 0 #000, 0 0 30px var(--accent); } }body[data-input="keys"] .sat.focus .icon { transform: translateY(-6px) scale(1.12); } @media (hover: hover) { .sat:hover .icon { transform: translateY(-6px) scale(1.12); } } @media (hover: none) { .sat:active .icon { transform: translateY(-6px) scale(1.12); } }body[data-input="keys"] .sat.focus .label { color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; } @media (hover: hover) { .sat:hover .label { color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; } } @media (hover: none) { .sat:active .label { color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; } }
 .sat[data-k="media"] { --accent: #9b5af3; } .sat[data-k="mind"] { --accent: #fd395e; } .sat[data-k="about"] { --accent: #0ea1ec; }
@@ -386,6 +386,14 @@ body[data-input="keys"] .card.focus { border-color: #000; }
 @media (max-width: 720px) {
   .panel { box-shadow: 3px 3px 0 #000, 0 16px 32px rgba(11,20,48,.12); }
 }
+
+.more { display: none !important; }
+.panel-body { scrollbar-width: none; } .panel-body::-webkit-scrollbar { display: none; }
+.sbar { position: absolute; right: 6px; width: 8px; background: color-mix(in srgb, var(--accent) 14%, #fff); border-radius: 4px; z-index: 3; touch-action: none; }
+.sbar.hide { display: none; }
+.sbar i { position: absolute; left: 0; right: 0; background: var(--accent); border-radius: 4px; box-shadow: 1px 1px 0 #000; cursor: grab; }
+.panel-body { padding-right: 24px !important; }
+@media (max-width: 720px) { .sbar { right: 4px; width: 6px; } .panel-body { padding-right: 16px !important; } }
 </style>
 </head>
 <body data-screen="hub">
@@ -583,9 +591,32 @@ function panel(root, title, count, bodyBuild, cls = '') {
   const p = el('div', 'panel' + (cls ? ' ' + cls : ''));
   p.appendChild(el('div', 'panel-head', `<div class="panel-title">${esc(title)}</div><div class="panel-count">${esc(count || '')}</div>`));
   const body = el('div', 'panel-body'); bodyBuild(body); p.appendChild(body);
-  const more = el('div', 'more', '▼ SCROLL'); p.appendChild(more);
-  const check = () => more.classList.toggle('hide', body.scrollHeight - body.clientHeight - body.scrollTop < 8);
-  body.addEventListener('scroll', check); requestAnimationFrame(check); setTimeout(check, 600);
+  // custom scrollbar: always visible (phones hide native ones), draggable
+  const bar = el('div', 'sbar'), thumb = document.createElement('i'); bar.appendChild(thumb); p.appendChild(bar);
+  const sync = () => {
+    const H = body.clientHeight, S = body.scrollHeight;
+    bar.classList.toggle('hide', S - H < 4);
+    bar.style.top = body.offsetTop + 8 + 'px'; bar.style.height = H - 16 + 'px';
+    const th = Math.max(28, (H - 16) * H / S);
+    thumb.style.height = th + 'px';
+    thumb.style.top = ((H - 16 - th) * (body.scrollTop / Math.max(1, S - H))) + 'px';
+  };
+  body.addEventListener('scroll', sync, { passive: true });
+  new ResizeObserver(sync).observe(body); new MutationObserver(sync).observe(body, { childList: true, subtree: true });
+  requestAnimationFrame(sync); setTimeout(sync, 600);
+  let dragY = null, dragTop = 0;
+  bar.addEventListener('pointerdown', e => {
+    e.preventDefault(); bar.setPointerCapture(e.pointerId);
+    const r = bar.getBoundingClientRect(), th = thumb.offsetHeight;
+    if (e.target !== thumb) { const f = (e.clientY - r.top - th / 2) / (r.height - th); body.scrollTop = f * (body.scrollHeight - body.clientHeight); }
+    dragY = e.clientY; dragTop = body.scrollTop;
+  });
+  bar.addEventListener('pointermove', e => {
+    if (dragY == null) return;
+    const r = bar.getBoundingClientRect(), th = thumb.offsetHeight;
+    body.scrollTop = dragTop + (e.clientY - dragY) * (body.scrollHeight - body.clientHeight) / Math.max(1, r.height - th);
+  });
+  bar.addEventListener('pointerup', () => { dragY = null; });
   wrap.appendChild(p); root.appendChild(wrap);
   return body;
 }
@@ -734,7 +765,7 @@ const ROUTES = {
           if (!a.dataset.glowBound) { a.dataset.glowBound = '1'; a.addEventListener('pointerenter', () => g.classList.add('hot')); a.addEventListener('pointerleave', () => g.classList.remove('hot')); }
           // line from the emblem's edge toward the satellite, stopping short of its ring
           const dx = x - cx, dy = y - cy, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
-          const x1 = cx + ux * (orbR * 1.08), y1 = cy + uy * (orbR * 1.08);
+          const x1 = cx + ux * (orbR * .96), y1 = cy + uy * (orbR * .96);
           const ringR = (phone ? 66 : Math.min(180, Math.max(110, W * .135))) / 2 + 8;
           const x2 = x - ux * ringR, y2 = y - uy * ringR;
           const col = ACCENT[s.k] || '#1e8cff';
