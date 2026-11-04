@@ -367,6 +367,25 @@ body:not([data-screen="hub"]) .emblem-shadow { display: none; }
   .footer { display: flex; bottom: 14px; font-size: 10px; }
   .crumbs { top: 10px; font-size: 6px; max-width: 94vw; overflow: hidden; text-overflow: ellipsis; }
 }
+
+/* ================= fewer lines: one clear edge per element ================= */
+.panel { padding: 0; box-shadow: 10px 12px 0 #000, 0 30px 60px rgba(11,20,48,.18); }
+.panel::after { left: 0; right: 0; bottom: 0; }
+.panel-head { border-bottom: 2px solid color-mix(in srgb, var(--accent) 50%, #fff); background: color-mix(in srgb, var(--accent) 12%, #fff); }
+.row { border: 2px solid transparent; }@media (hover: hover) { .row:hover { border-color: #000; } } @media (hover: none) { .row:active { border-color: #000; } }
+.row.on, body[data-input="keys"] .row.focus { border-color: #000; }
+.row .th { border: 0; box-shadow: none; }
+.row.sep { border: 0; border-bottom: 2px solid color-mix(in srgb, var(--accent) 45%, #fff); padding-top: 16px; }
+.card { border: 2px solid transparent; }@media (hover: hover) { .card:hover { border-color: #000; } } @media (hover: none) { .card:active { border-color: #000; } }
+body[data-input="keys"] .card.focus { border-color: #000; }
+.card video, .card img { border: 0; }
+.cd-sec { border: 2px solid transparent; background: color-mix(in srgb, var(--accent) 10%, #fff); }
+.cd-sec-head { background: transparent; }
+.cd-sec.open { border-color: #000; background: #fff; }
+.cd-sec-head .ct { border: 0; background: rgba(0,0,0,.08); }
+@media (max-width: 720px) {
+  .panel { box-shadow: 3px 3px 0 #000, 0 16px 32px rgba(11,20,48,.12); }
+}
 </style>
 </head>
 <body data-screen="hub">
