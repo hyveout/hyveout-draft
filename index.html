@@ -163,7 +163,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 .sat-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .sat-lines line { stroke-width: 3; stroke-linecap: round; stroke-dasharray: 5 8; opacity: .9; }
 .sat-lines line.under { display: none; }
-.sat-lines circle { r: 3; }
+.sat-lines circle { display: none; }
 .sat {
   --accent: var(--blue);
   position: absolute;
@@ -691,7 +691,7 @@ const ROUTES = {
           if (!a.dataset.glowBound) { a.dataset.glowBound = '1'; a.addEventListener('pointerenter', () => g.classList.add('hot')); a.addEventListener('pointerleave', () => g.classList.remove('hot')); }
           // line from the emblem's edge toward the satellite, stopping short of its ring
           const dx = x - cx, dy = y - cy, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
-          const x1 = cx + ux * (orbR * .9), y1 = cy + uy * (orbR * .9);
+          const x1 = cx + ux * (orbR * 1.08), y1 = cy + uy * (orbR * 1.08);
           const ringR = (phone ? 66 : Math.min(180, Math.max(110, W * .135))) / 2 + 8;
           const x2 = x - ux * ringR, y2 = y - uy * ringR;
           const col = ACCENT[s.k] || '#1e8cff';
