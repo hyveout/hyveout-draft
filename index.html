@@ -344,9 +344,12 @@ body:not([data-screen="hub"]) .emblem-shadow { display: none; }
   .sat .icon { filter: drop-shadow(2px 2px 0 rgba(0,0,0,.35)); }
   .sat .h3 { display: none; }
   .face { filter: drop-shadow(2px 3px 0 #000) drop-shadow(0 14px 18px rgba(20,60,150,.25)); }
-  .panel { box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 6px var(--accent), 5px 6px 0 #000, 0 20px 40px rgba(11,20,48,.14); }
+  .panel { box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 6px var(--accent), 3px 3px 0 #000, 0 16px 32px rgba(11,20,48,.12); }
+  .cd-sec, .cd-tab, .more, .strip button { box-shadow: 2px 2px 0 #000; }
+  .row:active, .card:active { box-shadow: 2px 2px 0 #000 !important; transform: none !important; }
+  .strip button.on { box-shadow: 2px 2px 0 var(--accent), 2px 2px 0 1px #000; }
   .row, .card, .btn, .arrow-btn, .chip { box-shadow: 2px 2px 0 #000; }
-  .viewer { box-shadow: 3px 3px 0 var(--accent), 3px 3px 0 2px #000; margin-bottom: 14px; }
+  .viewer { box-shadow: 2px 2px 0 var(--accent), 2px 2px 0 2px #000; margin-bottom: 14px; }
   body:not([data-screen="hub"]) .face { filter: drop-shadow(1.5px 2px 0 #000); }
   .sat .label { font-size: 9px; letter-spacing: 0; }
   .sat { gap: 14px; }
