@@ -292,7 +292,7 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
 .social { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
 
 /* game grid */
-.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .card video, .card img { aspect-ratio: 516/286; }
 .card { border: 2px solid #000; background: color-mix(in srgb, var(--accent) 16%, #fff); padding: 8px; box-shadow: 4px 4px 0 #000; cursor: pointer; transition: transform .12s, background .12s; text-decoration: none; color: var(--ink); display: block; }
 .card video, .card img { width: 100%; aspect-ratio: 516/286; object-fit: cover; display: block; background: #000; border: 2px solid #000; }
@@ -327,7 +327,8 @@ body { text-shadow: 0.4px 0 rgba(255,0,80,.18), -0.4px 0 rgba(0,140,255,.18); }
   .crumbs { top: calc(7.5vh + 46px); }
   .panel-head { padding: 12px 12px 8px; } .panel-body { padding: 10px; }
   .row { gap: 8px; padding: 8px 8px; font-size: 7px; } .row .th { width: 48px; } .row .m { display: none; }
-  .cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cards, .panel.wide .cards { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .panel.wide .card .t { font-size: 13px; margin-top: 10px; }
   .prompts { padding: 0 12px; font-size: 6px; bottom: 10px; } .key { width: 20px; height: 20px; font-size: 7px; }
   .footer { display: flex; bottom: 14px; font-size: 10px; }
   .crumbs { top: 10px; font-size: 6px; max-width: 94vw; overflow: hidden; text-overflow: ellipsis; }
